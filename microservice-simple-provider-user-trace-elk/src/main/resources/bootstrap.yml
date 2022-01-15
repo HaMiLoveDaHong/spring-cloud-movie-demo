@@ -1,0 +1,5 @@
+#logback-spring.xml 该文件的springAppName 通过该文件设置文件获取
+spring:
+  application:
+    name: microservice-simple-provider-user-trace-elk
+

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--引入spring boot 的依赖-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.3.RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.zhw.cloud</groupId>
+    <artifactId>spring-cloud-movie-demo-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>microservice-trace-zipkin-server</module>
+        <module>microservice-file-upload</module>
+        <module>microservice-gateway-zuul-filter</module>
+        <module>microservice-gateway-zuul-aggregation</module>
+        <module>microservice-gateway-zuul</module>
+        <module>microservice-hystrix-turbine-mq</module>
+        <module>microservice-hystrix-turbine</module>
+        <module>microservice-hystrix-dashboard</module>
+        <module>microservice-simple-provider-user</module>
+        <module>microservice-simple-provider-user-trace-zipkin</module>
+        <module>microservice-simple-provider-user-trace-elk</module>
+        <module>microservice-simple-provider-user-trace</module>
+        <module>microservice-simple-provider-user-v3</module>
+        <module>microservice-simple-provider-user-auth</module>
+        <module>microservice-simple-provider-user2</module>
+        <module>microservice-simple-consumer-movie</module>
+        <module>microservice-simple-consumer-movie-trace</module>
+        <module>microservice-simple-consumer-movie-trace-zipkin</module>
+        <module>microservice-consumer-movie-without-eureka</module>
+        <module>microservice-simple-consumer-movie-ribbon-customizing</module>
+        <module>microservice-simple-consumer-movie-fegin-customzing</module>
+        <module>microservice-simple-consumer-movie-fegin-auth</module>
+        <module>microservice-simple-consumer-movie-hystrix</module>
+        <module>microservice-simple-consumer-movie-hystrix-turbine-mq</module>
+        <module>microservice-simple-consumer-movie-hystrix-fegin</module>
+        <module>microservice-simple-consumer-movie-hystrix-fegin-fallback-factory</module>
+        <module>microservice-discovery-eureka</module>
+        <module>microservice-discovery-eureka2</module>
+    </modules>
+
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Camden.SR4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.70</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.16.12</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

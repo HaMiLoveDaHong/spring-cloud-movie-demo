@@ -1,0 +1,72 @@
+logging:
+  level:
+    com.netflix: DEBUG # zuul 打印转发具体细节
+
+server:
+  port: 8040
+  tomcat:
+    uri-encoding: UTF-8
+
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+
+spring:
+  application:
+    name: @project.artifactId@
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://movie:movie@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      my-metadata: 我自定义的元数据
+
+# 配置路由
+zuul:
+#可以指定前缀
+#  prefix: /api
+#  sensitive-headers: 公共头部设置
+  routes:
+    microservice-simple-consumer-movie-hystrix-turbine-mq:
+      path: /moviceApi/**
+#      sensitive-headers: 服务头部设置
+
+#忽略某些路径
+#  ignored-patterns: /**/user/**
+# 忽略指定服务 或使用 * 可忽略所有版本
+#  ignored-services:
+#    microservice-simple-consumer-movie,microservice-simple-provider-user
+#同时制定微服务的serviceId和对应路径
+#    user-route:
+#      service-id: microservice-simple-consumer-movie-hystrix-turbine-mq
+#      path: /moviceApi/**
+
+#使用zuul文件上传，对于小文件（1M）上传，无需处理。对于大文件（10M以上），需要为上传路径添加/zuul前缀，也可以使用 zuul.servlet-path 自定义前缀，
+#假设 zuul.routes.microservice-file-upload = /microservice-file-upload/**,如果http://{HOST}:{PORT}/upload 是微服务 microservice-file-upload 的上传路径，
+#则可以用Zuul的/zuul/microservice-file-upload/upload
+
+
+#如果使用ribbon 做负载均衡，对于超大文件上传，需要提升超时设置
+#设置Hystrix服务连接超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000

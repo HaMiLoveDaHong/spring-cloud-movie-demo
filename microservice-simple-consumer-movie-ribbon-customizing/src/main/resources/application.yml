@@ -1,0 +1,32 @@
+server:
+  port: 8003
+
+user:
+  serviceUrl: http://localhost:8000/user/
+  appId: MICROSERVICE-SIMPLE-PROVIDER-USER
+
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+
+spring:
+  application:
+    name: @project.artifactId@
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://movie:movie@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+#修改名为：MICROSERVICE-SIMPLE-PROVIDER-USER的Ribbon 客户端的负载均衡规则
+#MICROSERVICE-SIMPLE-PROVIDER-USER:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+

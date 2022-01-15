@@ -1,0 +1,28 @@
+server:
+  port: 8001
+
+user:
+  serviceUrl: http://localhost:8000/user/
+  appId: MICROSERVICE-SIMPLE-PROVIDER-USER
+
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+
+spring:
+  application:
+    name: @project.artifactId@
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://movie:movie@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+
