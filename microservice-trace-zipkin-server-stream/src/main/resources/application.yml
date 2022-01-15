@@ -1,0 +1,28 @@
+server:
+  port: 9411
+
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+
+spring:
+  application:
+    name: @project.artifactId@
+  rabbitmq:
+    host: 192.168.31.183
+    port: 5672
+    username: guest
+    password: guest
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://movie:movie@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
